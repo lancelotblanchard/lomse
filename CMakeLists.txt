@@ -211,8 +211,8 @@ cmake_policy(SET CMP0054 NEW)   # quoted arguments will not be further dereferen
 
 #prevent in-source builds
   # make sure the user doesn't play dirty with symlinks
-  get_filename_component(srcdir "${CMAKE_SOURCE_DIR}" REALPATH)
-  get_filename_component(bindir "${CMAKE_BINARY_DIR}" REALPATH)
+  get_filename_component(srcdir "${PROJECT_SOURCE_DIR}" REALPATH)
+  get_filename_component(bindir "${PROJECT_BINARY_DIR}" REALPATH)
 
   # disallow in-source builds
   if("${srcdir}" STREQUAL "${bindir}")
@@ -419,8 +419,8 @@ message(STATUS "")
 include( ${LOMSE_ROOT_DIR}/build-version.cmake )
 
 add_custom_target (build-version ALL
-  COMMAND ${CMAKE_COMMAND} -D LOMSE_ROOT_DIR=${CMAKE_SOURCE_DIR} -P ${CMAKE_SOURCE_DIR}/build-version.cmake
-  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMAND ${CMAKE_COMMAND} -D LOMSE_ROOT_DIR=${PROJECT_SOURCE_DIR} -P ${PROJECT_SOURCE_DIR}/build-version.cmake
+  WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
   COMMENT "setting Lomse version information ...")
 
 # identify platform and compiler
