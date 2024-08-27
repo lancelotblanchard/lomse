@@ -209,6 +209,9 @@ cmake_policy(SET CMP0042 NEW)   #MACOSX_RPATH is enabled by default
 #Windows 10 camplains 
 cmake_policy(SET CMP0054 NEW)   # quoted arguments will not be further dereferenced
 
+# project name
+project(lomse)
+
 #prevent in-source builds
   # make sure the user doesn't play dirty with symlinks
   get_filename_component(srcdir "${PROJECT_SOURCE_DIR}" REALPATH)
@@ -232,10 +235,6 @@ cmake_policy(SET CMP0054 NEW)   # quoted arguments will not be further dereferen
     message("**********************************************************")
     message(FATAL_ERROR "Quitting configuration")
   endif()
-
-
-# project name
-project(lomse)
 
 # uncomment for debugging
 #set(CMAKE_VERBOSE_MAKEFILE on)
