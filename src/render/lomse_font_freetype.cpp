@@ -158,7 +158,13 @@ bool decompose_ft_outline(const FT_Outline& outline, bool flip_y, const trans_af
 
     FT_Vector*  point;
     FT_Vector*  limit;
+    // Freetype version 2.13.3 and later uses unsigned char for tags
+#if (FREETYPE_MAJOR > 2) || (FREETYPE_MAJOR == 2 && FREETYPE_MINOR > 13) || \
+    (FREETYPE_MAJOR == 2 && FREETYPE_MINOR == 13 && FREETYPE_PATCH >= 3)
     unsigned char*       tags;
+#else
+    char*       tags;
+#endif
 
     int   n;         // index of contour in outline
     int   first;     // index of first point in contour
